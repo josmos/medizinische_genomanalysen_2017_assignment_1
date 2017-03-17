@@ -1,0 +1,24 @@
+Assignment 1
+Josef Moser
+
+Refseq Sam Header:
+	VN (Format version): 1.0
+	SO (Sorting order of Alignments): coordinate
+
+Number of mapped reads: 1320603
+
+Gene symbol for gene NM_000051: ATM
+
+Gene region of gene NM_000051: chr11:108093558-108239826
+
+Number of exons in gene NM_000051: 63
+
+Properly parired reads in gene NM_000051: 7554
+
+Reads with indels mapping on gene NM_000051: 89
+
+The avarage coverage of gene ATM is: 5.916920400173988
+
+The avarage coverage of Chromosome 11 is: 5.608294198569065
+
+Process finished with exit code 0
