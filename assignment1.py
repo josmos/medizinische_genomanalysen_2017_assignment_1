@@ -162,7 +162,6 @@ class Assignment1:
         self.calculate_gene_average_coverage()
         self.calculate_total_average_coverage()
 
-
 if __name__ == '__main__':
     print("Assignment 1")
     print(__author__)
