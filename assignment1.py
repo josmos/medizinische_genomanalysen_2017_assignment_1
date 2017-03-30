@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 import mysql.connector
 from ast import literal_eval as make_tuple
 import os
@@ -39,7 +40,7 @@ class Assignment1:
         if not os.path.isfile(self.path):
             self.genefh = self.fetch_gene_coordinates("hg19", self.genesfile)
 
-        else:
+        if os.path.isfile(self.path):
             self.genefh = open(self.genesfile)
 
         self.refseq = pysam.AlignmentFile(self.refseqfile, "rb")
@@ -48,18 +49,21 @@ class Assignment1:
         self.goi_file = self.write_bam()
 
     def get_goi(self, fh):
-        for line in fh.readlines():
-            tup = make_tuple(line)
-            if tup[0] == self.gene:
-                self.goi = GoI(*[i for i in tup])
+        try:
+            for line in fh.readlines():
+                tup = make_tuple(line)
+                if tup[0] == self.gene:
+                    self.goi = GoI(*[i for i in tup])
+        finally:
+            fh.close()
 
         return self.goi
 
     def write_bam(self):
         fn = self.goi.name + ".bam"
-        outfile = pysam.AlignmentFile(fn, "wb", template=self.refseq)
-        for read in self.goi_reads:
-            outfile.write(read)
+        with pysam.AlignmentFile(fn, "wb", template=self.refseq) as outfile:
+            for read in self.goi_reads:
+                outfile.write(read)
 
         return fn
 
