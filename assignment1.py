@@ -107,7 +107,7 @@ class Assignment1:
                 print("\tGO: (Grouping of alignments): {}".format(v))
 
     def get_properly_paired_reads_of_gene(self):
-        rds = [r for r in self.goi_reads if r.is_paired]  # only paired reads
+        rds = [r for r in self.goi_reads if r.is_proper_pair]  # only paired reads
         print("\nProperly parired reads in gene {}: {}".format(self.goi.accession,
                                                                max([i for i, x in enumerate(rds)])))
 
